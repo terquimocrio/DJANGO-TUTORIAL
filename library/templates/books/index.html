@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block tittle %} List of books {% endblock %} 
+{%block content %}
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-header">
+      <a
+        name=""
+        id=""
+        class="btn btn-success"
+        href="{% url 'create' %}"
+        role="button"
+        >Add a new book</a
+      >
+    </div>
+    <div class="card-body"></div>
+    <div class="card-body">
+      <h4 class="card-title">Books</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Ttitle</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr>
+            <td scope="row">{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>
+              <img src="{{ book.image.url }}" height="100px" width="100px">
+            </td>
+            <td>{{ book.description }}</td>
+            <td>
+              <a name="" id="" class="btn btn-info" href="{% url 'edit' book.id %}" role="button"
+                >Edit</a
+              >
+              |
+              <a name="" id="" class="btn btn-danger" href="{% url 'delete' book.id %}" role="button"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+  alert("Hey")
+</script>
+
+{% endblock %}
